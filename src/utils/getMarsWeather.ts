@@ -32,7 +32,7 @@ const getWeather = async (): Promise<WeatherData[]> => {
         return Finaldata;
     } catch (e) {
         console.log(e);
-        throw new Error('Reques failed ):');
+        throw new Error('Request failed ):');
     }
 };
 
