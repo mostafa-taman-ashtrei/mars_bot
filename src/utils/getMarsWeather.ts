@@ -1,15 +1,7 @@
 import axios from 'axios';
-import formatDate from './format';
 
-interface WeatherData {
-    sol: string
-    maxTemp: number | undefined
-    minTemp: number | undefined
-    windSpeed: number | undefined
-    windDirectionDegrees: number | undefined
-    windDirectionCardinal: string | undefined
-    date: string
-}
+import { WeatherData } from '../interfaces/weatherData';
+import formatDate from './format';
 
 const getWeather = async (): Promise<WeatherData[]> => {
     try {
@@ -17,7 +9,7 @@ const getWeather = async (): Promise<WeatherData[]> => {
         const res = await axios.get(url);
         const weather = res.data;
 
-        const Finaldata = weather.sol_keys.map((solKey: any) => (
+        const Finaldata = weather.sol_keys.map((solKey: string) => (
             {
                 sol: solKey,
                 maxTemp: weather[solKey].AT?.mx || 'No data',
